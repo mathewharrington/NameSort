@@ -11,8 +11,7 @@ namespace NameSorter.Application.Service
         /// </summary>
         /// <returns>The names.</returns>
         /// <param name="fileName">File name.</param>
-        /// <param name="directory">Directory.</param>
-        IList<Name> GetNames(string fileName, string directory);
+        IList<Name> GetNames(string fileName);
 
         /// <summary>
         /// Sort the names.

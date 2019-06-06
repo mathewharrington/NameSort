@@ -9,20 +9,24 @@ namespace NameSorter
 {
     class Program
     {
+        #region Private Members
+
         private static IServiceProvider _serviceProvider;
+
+        #endregion
 
         static void Main(string[] args)
         {
             var fullFileArgument = args[0];
             var fileName = Path.GetFileName(fullFileArgument);
-            var directory = Path.GetDirectoryName(fullFileArgument);
 
             // Configure container and get instance of Name Service.
             ConfigureServices();
+
             var nameService = _serviceProvider.GetService<INameService>();
 
             // Read in names from file.
-            var names = nameService.GetNames(fileName, directory);
+            var names = nameService.GetNames(fileName);
 
             // Sort names.
             var sortedNames = nameService.SortNames(names);
@@ -30,22 +34,13 @@ namespace NameSorter
             // Print names to screen.
             foreach(var name in sortedNames)
             {
-                var displayName = $"{name.FirstGivenName} ";
-
-                if(!string.IsNullOrEmpty(name.SecondGivenName))
-                    displayName += $"{name.SecondGivenName} ";
-
-                if(!string.IsNullOrEmpty(name.ThirdGivenName))
-                    displayName += $"{name.ThirdGivenName} ";
-
-                displayName += $"{name.Surname}";
-
-                Console.WriteLine(displayName);
+                Console.WriteLine(name.GetConcatenatedName());
             }
 
             // Save sorted names to file.
+            nameService.SaveNames(sortedNames);
 
-            // Dispose container.
+            // Release resources.
             DisposeServices();
 
         }

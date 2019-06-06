@@ -7,6 +7,11 @@ namespace NameSorter.Application.Model
 {
     public class Sorter : ISorter
     {
+        /// <summary>
+        /// Sort the names by surname then by given names.
+        /// </summary>
+        /// <returns>The names.</returns>
+        /// <param name="names">Names.</param>
         public IList<Name> SortNames(IList<Name> names)
         {
             var sortedNames = names.OrderBy(x => x.Surname)

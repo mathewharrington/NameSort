@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using NameSorter.Application.Model.Entities;
@@ -8,6 +7,8 @@ namespace NameSorter.Application.Infrastructure
 {
     public class NameFileSystemDao : INameDao
     {
+        private readonly string SortedNamesFilename = "sorted-names-list.txt";
+
         /// <summary>
         /// Load names from file.
         /// </summary>
@@ -54,7 +55,18 @@ namespace NameSorter.Application.Infrastructure
         /// <param name="names">Names.</param>
         public void SaveNames(IList<Name> names)
         {
-         
+            if(File.Exists(SortedNamesFilename))
+            {
+                File.Delete(SortedNamesFilename);
+            }
+
+            using (StreamWriter writer = File.AppendText(SortedNamesFilename))
+            {
+                foreach(var name in names)
+                {
+                    writer.WriteLine(name.GetConcatenatedName());
+                }
+            }
         }
     }
 }
