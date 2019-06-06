@@ -12,4 +12,12 @@
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.9.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Application\" />
+    <Folder Include="Application\Model\" />
+    <Folder Include="Application\Model\Entities\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NameSorter\NameSorter.csproj" />
+  </ItemGroup>
 </Project>

@@ -14,11 +14,16 @@ namespace NameSorter.Application.Model
         /// <param name="names">Names.</param>
         public IList<Name> SortNames(IList<Name> names)
         {
-            var sortedNames = names.OrderBy(x => x.Surname)
+            var sortedNames = new List<Name>();
+            if(names != null && names.Any())
+            {
+                sortedNames = names.OrderBy(x => x.Surname)
                 .ThenBy(x => x.FirstGivenName)
                 .ThenBy(x => x.SecondGivenName)
                 .ThenBy(x => x.ThirdGivenName)
                 .ToList();
+            }
+
             return sortedNames;
         }
     }

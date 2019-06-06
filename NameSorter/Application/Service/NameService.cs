@@ -18,13 +18,15 @@ namespace NameSorter.Application.Service
         }
 
         /// <summary>
-        /// Get names from repository.
+        /// Get sorted list of names.
         /// </summary>
-        /// <returns>The names.</returns>
+        /// <returns>The sorted names.</returns>
         /// <param name="fileName">File name.</param>
-        public IList<Name> GetNames(string fileName)
+        public IList<Name> GetSortedNames(string fileName)
         {
-            return _nameRepository.GetNames(fileName);
+            var names = _nameRepository.GetNames(fileName);
+            var sortedNames = _nameSorter.SortNames(names);
+            return sortedNames; 
         }
 
         /// <summary>
@@ -34,16 +36,6 @@ namespace NameSorter.Application.Service
         public void SaveNames(IList<Name> names)
         {
             _nameRepository.SaveNames(names);
-        }
-
-        /// <summary>
-        /// Sort the given names.
-        /// </summary>
-        /// <returns>The names.</returns>
-        /// <param name="names">Names.</param>
-        public IList<Name> SortNames(IList<Name> names)
-        {
-            return _nameSorter.SortNames(names);
         }
     }
 }

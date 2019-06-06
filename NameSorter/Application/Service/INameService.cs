@@ -7,21 +7,14 @@ namespace NameSorter.Application.Service
     public interface INameService
     {
         /// <summary>
-        /// Gets the names.
+        /// Get sorted list of names.
         /// </summary>
-        /// <returns>The names.</returns>
+        /// <returns>The sorted names.</returns>
         /// <param name="fileName">File name.</param>
-        IList<Name> GetNames(string fileName);
+        IList<Name> GetSortedNames(string fileName);
 
         /// <summary>
-        /// Sort the names.
-        /// </summary>
-        /// <returns>The names.</returns>
-        /// <param name="names">Names.</param>
-        IList<Name> SortNames(IList<Name> names);
-
-        /// <summary>
-        /// Saves the names.
+        /// Saves the list of names.
         /// </summary>
         /// <param name="names">Names.</param>
         void SaveNames(IList<Name> names);
