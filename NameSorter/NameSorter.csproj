@@ -5,4 +5,17 @@
     <TargetFramework>netcoreapp2.2</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.2.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Application\" />
+    <Folder Include="Application\Infrastructure\" />
+    <Folder Include="Application\Model\" />
+    <Folder Include="Application\Service\" />
+    <Folder Include="Application\Model\Entities\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Application\Integration\GetNamesRequest.cs" />
+  </ItemGroup>
 </Project>
