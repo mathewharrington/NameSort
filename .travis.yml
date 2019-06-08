@@ -4,9 +4,8 @@ mono: none
 dotnet: 2.2
 script:
  - dotnet restore
+ - msbuild /p:Configuration=Release NameSorter.sln
+ - mono ./testrunner/NUnit.ConsoleRunner.3.9.0/tools/nunit3-console.exe ./NameSorter.Tests/bin/Release/NameSorter.Tests.dll
  install:
   - nuget restore NameSorter.sln
   - nuget install NUnit.Console -Version 3.9.0 -OutputDirectory testrunner
-script:
-  - msbuild /p:Configuration=Release NameSorter.sln
-  - mono ./testrunner/NUnit.ConsoleRunner.3.9.0/tools/nunit3-console.exe ./NameSorter.Tests/bin/Release/NameSorter.Tests.dll
