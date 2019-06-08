@@ -5,8 +5,11 @@ install:
   - "nuget install NUnit.Console -Version 3.9.0 -OutputDirectory testrunner"
 language: csharp
 mono: none
+sudo: required
+dist: xenial
 script: 
   - "dotnet restore"
   - "msbuild /p:Configuration=Release NameSorter.sln"
   - "mono ./testrunner/NUnit.ConsoleRunner.3.9.0/tools/nunit3-console.exe ./NameSorter.Tests/bin/Release/NameSorter.Tests.dll"
 solution: NameSorter.sln
+
