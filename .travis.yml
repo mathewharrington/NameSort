@@ -1,9 +1,8 @@
 --- 
 dotnet: "2.2"
 install:
-  - "nuget"
-  - "nuget restore NameSorter.sln"
-  - "nuget install NUnit.Console -Version 3.9.0 -OutputDirectory testrunner"
+  - nuget restore NameSorter.sln
+  - nuget install NUnit.Console -Version 3.9.0 -OutputDirectory testrunner
 language: csharp
 mono: none
 sudo: required
